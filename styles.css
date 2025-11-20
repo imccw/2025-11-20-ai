@@ -1,0 +1,125 @@
+/* Base layout */
+:root {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #f7f7f7;
+  color: #1a2233;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #f6f7fb, #f1f3f8 45%, #e1e5ef 100%);
+}
+
+.translator-shell {
+  width: min(950px, 90vw);
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15), 0 15px 35px rgba(15, 23, 42, 0.08);
+}
+
+.translator-shell h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.75rem;
+  color: #1f2937;
+}
+
+.translator-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  margin-bottom: 1.75rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+label {
+  font-size: 0.95rem;
+  color: #5b6176;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+select,
+textarea {
+  border-radius: 12px;
+  border: 1px solid #d3d7e0;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  resize: vertical;
+  font-family: inherit;
+  background: #fafbff;
+}
+
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+textarea {
+  min-height: 6.5rem;
+}
+
+.style-group {
+  margin-bottom: 1rem;
+}
+
+.instruction-note {
+  font-size: 0.8rem;
+  color: #7b8498;
+  margin: 0;
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.35);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.status-text {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #2563eb;
+  min-height: 1.25rem;
+}
+
+@media (max-width: 600px) {
+  .translator-shell {
+    padding: 1.5rem;
+  }
+}

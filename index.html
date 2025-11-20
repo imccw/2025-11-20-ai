@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text Translator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="translator-shell">
+    <h1>Text Translator</h1>
+    <div class="translator-grid">
+      <div class="field-group">
+        <label for="input-lang">Input Language</label>
+        <select id="input-lang">
+          <option value="english">English</option>
+          <option value="spanish">Spanish</option>
+          <option value="french">French</option>
+          <option value="chinese-mandarin">Chinese (Mandarin)</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label for="output-lang">Output Language</label>
+        <select id="output-lang">
+          <option value="german">German</option>
+          <option value="english">English</option>
+          <option value="italian">Italian</option>
+          <option value="chinese-cantonese">Chinese (Cantonese)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field-group style-group">
+      <label for="style-select">Style instruction</label>
+      <select id="style-select">
+        <option value="default">Neutral / professional</option>
+        <option value="hk-mafia-90s">90s Hong Kong mafia (slightly rude but controlled)</option>
+      </select>
+      <p class="instruction-note">
+        The translator will lean on this tone when generating the output, so the second option
+        makes the response feel like a Hong Kong mobster from the 1990s without being overboard.
+      </p>
+    </div>
+
+    <div class="translator-grid">
+      <div class="field-group textarea-group">
+        <label for="input-text">Enter text to translate</label>
+        <textarea id="input-text" rows="6">I like programming.</textarea>
+      </div>
+      <div class="field-group textarea-group">
+        <label for="output-text">Translation</label>
+        <textarea id="output-text" rows="6" readonly placeholder="Translation will appear here"></textarea>
+      </div>
+    </div>
+
+    <button id="translate-btn">Translate</button>
+    <p id="status-text" class="status-text" aria-live="polite"></p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
