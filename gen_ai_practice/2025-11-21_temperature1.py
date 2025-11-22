@@ -9,12 +9,12 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
-    temperature=0.0,
+    temperature=1.0,
     api_key=GEMINI_API_KEY
 )
 
 prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are a helpful AI assistant. Answer all questions to the best of your ability. Answer concisely and straight to the point."),
+    ("system", "You are a helpful AI assistant. Answer all questions to the best of your ability."),
     ("human", "{input}")
 ])
 
