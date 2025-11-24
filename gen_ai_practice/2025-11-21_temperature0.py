@@ -14,7 +14,7 @@ llm = ChatGoogleGenerativeAI(
 )
 
 prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are a helpful AI assistant. Answer all questions to the best of your ability."),
+    ("system", "You are a helpful AI assistant. Answer all questions to the best of your ability. Answer in one paragraph."),
     ("human", "{input}")
 ])
 

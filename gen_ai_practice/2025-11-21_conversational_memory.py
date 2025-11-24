@@ -11,14 +11,14 @@ load_dotenv()
 
 # LLM setup
 llm = ChatGoogleGenerativeAI(
-    model="gemini-2.0-flash",
+    model="gemini-2.5-flash",
     temperature=0.0,
     api_key=os.getenv("GEMINI_API_KEY")
 )
 
 # Prompt template
 prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are a helpful AI assistant. Answer all questions to the best of your ability."),
+    ("system", "You are a helpful AI assistant. Answer all questions to the best of your ability. Answer in one paragraph."),
     MessagesPlaceholder(variable_name="history"),
     ("human", "{input}")
 ])
