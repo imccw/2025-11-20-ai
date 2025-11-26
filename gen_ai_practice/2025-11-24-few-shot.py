@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
+# from langchain.prompts import FewShotPromptTemplate, PromptTemplate
 
 examples = [
     {"review": "Great quality for reasonable price. Excellent!", "sentiment": "Positive"},
