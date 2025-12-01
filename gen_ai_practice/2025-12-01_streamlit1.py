@@ -36,7 +36,6 @@ def encode_image(image_file):
     return base64.b64encode(image_file.read()).decode()
 
 st.title("Image Analysis Using Gemini")
-
 col1, col2 = st.columns(2)
 
 with col1:
