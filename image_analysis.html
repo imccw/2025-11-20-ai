@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Macronutrient Snapshot</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="image-shell">
+    <h1>Upload your meal photo</h1>
+    <p>We will analyze the plate and highlight the macronutrient breakdown in grams.</p>
+
+    <form id="image-form" class="image-form">
+      <label class="file-field" for="image-file">
+        <span>Select a JPEG or PNG image</span>
+        <input type="file" id="image-file" accept="image/png,image/jpeg" required />
+      </label>
+      <button id="analyze-btn" type="submit">Analyze meal</button>
+    </form>
+
+    <p id="status-text" class="status-text" aria-live="polite"></p>
+
+    <div class="result-grid">
+      <div class="chart-card">
+        <canvas id="macro-chart" aria-label="Macronutrient pie chart" role="img"></canvas>
+      </div>
+      <div id="macro-list" class="macro-list"></div>
+    </div>
+
+    <pre id="analysis-output" class="analysis-output" aria-live="polite"></pre>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="image_analysis.js"></script>
+</body>
+</html>

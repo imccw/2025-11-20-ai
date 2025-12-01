@@ -123,3 +123,120 @@ button:disabled {
     padding: 1.5rem;
   }
 }
+
+.image-shell {
+  width: min(950px, 95vw);
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15), 0 15px 35px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.image-shell h1 {
+  font-size: 2rem;
+  color: #1f2937;
+  margin: 0;
+  text-align: center;
+}
+
+.image-shell p {
+  margin: 0;
+  color: #475569;
+  text-align: center;
+}
+
+.image-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-field {
+  flex: 1;
+  min-width: 220px;
+  border: 2px dashed #d3d7e0;
+  border-radius: 14px;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+  transition: border-color 0.2s ease;
+}
+
+.file-field:hover {
+  border-color: #2563eb;
+}
+
+.file-field input {
+  display: none;
+}
+
+.image-form button {
+  flex: 0 0 220px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.chart-card {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 16px;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-card canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.macro-list {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 280px;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.1);
+}
+
+.macro-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+.macro-row strong {
+  font-size: 1.1rem;
+}
+
+.analysis-output {
+  background: #0f172a;
+  color: #f1f5f9;
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 0.9rem;
+  max-height: 160px;
+  overflow: auto;
+  white-space: pre-wrap;
+  margin: 0;
+}
