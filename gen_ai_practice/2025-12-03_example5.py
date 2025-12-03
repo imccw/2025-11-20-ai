@@ -7,8 +7,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 
 from langchain_core.prompts import ChatPromptTemplate
-from langchain.chains import create_retrieval_chain
-from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_classic.chains import create_retrieval_chain
+from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 
 from langchain_mongodb import MongoDBAtlasVectorSearch
 
@@ -26,7 +26,7 @@ llm = ChatGoogleGenerativeAI(
 )
 
 embeddings = GoogleGenerativeAIEmbeddings(
-    model="models/embedding-001",
+    model="models/text-embedding-004",
     google_api_key=GEMINI_API_KEY
 )
 
@@ -69,7 +69,7 @@ document_chain = create_stuff_documents_chain(llm, prompt)
 chain = create_retrieval_chain(retriever, document_chain)
 
 # Example query
-ai_response = chain.invoke({"input": "what is the genetic syndromes for diabetes"})
+ai_response = chain.invoke({"input": "what is the continent with highest diabetes among children?"})
 print(ai_response["answer"])
 
 client.close()
