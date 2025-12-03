@@ -29,7 +29,7 @@ text_splitter = RecursiveCharacterTextSplitter(
     chunk_overlap=100
 )
 
-loader = PyPDFLoader('media/diabetes.pdf')
+loader = PyPDFLoader('media/ocean.pdf')
 docs = loader.load_and_split(text_splitter)
 vector_store.add_documents(docs)
 

@@ -6,3 +6,5 @@ google-ai-generativelanguage==0.9.0
 python-multipart
 bs4
 yt-dlp
+langchain_text_splitters
+pypdf

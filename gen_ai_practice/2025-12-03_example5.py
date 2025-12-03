@@ -6,7 +6,11 @@ from pymongo import MongoClient
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts import (
+    ChatPromptTemplate,
+    HumanMessagePromptTemplate,
+    SystemMessagePromptTemplate,
+)
 from langchain_classic.chains import create_retrieval_chain
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 
@@ -60,16 +64,17 @@ Be concise and factual.
 """
 
 # Build chat chain
-prompt = ChatPromptTemplate.from_messages([
-    ("system", system_prompt),
-    ("human", "{input}")
-])
+system_message = SystemMessagePromptTemplate.from_template(system_prompt)
+human_message = HumanMessagePromptTemplate.from_template(
+    "Context:\n{context}\n\nQuestion:\n{input}"
+)
+prompt = ChatPromptTemplate.from_messages([system_message, human_message])
 
 document_chain = create_stuff_documents_chain(llm, prompt)
 chain = create_retrieval_chain(retriever, document_chain)
 
 # Example query
-ai_response = chain.invoke({"input": "what is the continent with highest diabetes among children?"})
+ai_response = chain.invoke({"input": "which continent is most affected by diabetes?"})
 print(ai_response["answer"])
 
 client.close()

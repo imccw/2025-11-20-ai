@@ -3,11 +3,11 @@ from dotenv import load_dotenv
 
 from pymongo import MongoClient
 from langchain_mongodb import MongoDBAtlasVectorSearch
-from langchain_google_gemini import ChatGoogleGenerativeAI
-from langchain_google_gemini.embeddings import GoogleGenerativeAIEmbeddings
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_google_genai.embeddings import GoogleGenerativeAIEmbeddings
 
-from langchain.chains import create_retrieval_chain
-from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_classic.chains import create_retrieval_chain
+from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 
 # Load environment variables
@@ -24,7 +24,7 @@ llm = ChatGoogleGenerativeAI(
 )
 
 embeddings = GoogleGenerativeAIEmbeddings(
-    model="models/embedding-001",
+    model="models/text-embedding-004",
     google_api_key=GEMINI_API_KEY
 )
 
@@ -50,21 +50,14 @@ retriever = vector_store.as_retriever()
 # ==============================
 # SYSTEM PROMPT (IMPORTANT PART)
 # ==============================
-system_prompt = """
-You are an AI assistant with access to retrieved knowledge documents.
+system_prompt = (
+    "You are an assistant for question-answering tasks. "
+    "Use the following pieces of retrieved context to answer the question. "
+    "If you don't know the answer, say that you don't know."
+    "\n\n"
+    "{context}"
+)
 
-Rules you must follow:
-
-1. **Always base your answers on retrieved context first.**
-2. If context is missing or unclear, acknowledge uncertainty instead of inventing unsupported facts.
-3. When listing or explaining, be concise but meaningful.
-4. If the user asks something outside provided documents, answer normally using general knowledge but mention that retrieval did not supply it.
-
-Final output must be:
-- **Helpful**
-- **Truthful**
-- **Direct**
-"""
 
 # Prompt setup
 prompt = ChatPromptTemplate.from_messages([
@@ -77,7 +70,7 @@ document_chain = create_stuff_documents_chain(llm, prompt)
 chain = create_retrieval_chain(retriever, document_chain)
 
 # Invoke
-ai_response = chain.invoke({"input": "Three facts about animals"})
+ai_response = chain.invoke({"input": "list down 3 facts about the english word."})
 print(ai_response["answer"])
 
 client.close()
