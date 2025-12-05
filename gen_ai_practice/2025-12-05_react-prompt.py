@@ -60,8 +60,8 @@ def execute_with_retry(question):
     return response["output"]
 
 if __name__ == "__main__":
-    question = "What's the result of an investment of $10,000 growing at 8% annually for 5 years with compound interest?"
-    # question = "What's the date human will become extinct if we do not do anything to mitigate pollution?"
+    # question = "What's the result of an investment of $10,000 growing at 8% annually for 5 years with compound interest?"
+    question = "Look for AI applications in medical diagnosis"
     print("\n" + "=" * 50)
     print(f"Question: {question}")
     try:
